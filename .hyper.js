@@ -40,7 +40,7 @@ module.exports = {
     backgroundColor: '#262626',
 
     // terminal selection color
-    selectionColor: '#887afaf',
+    selectionColor: '#87AFAF',
 
     // border color (window, tabs)
     borderColor: '#333',
