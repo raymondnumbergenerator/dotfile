@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/r/ra/raymondng/school/cs161/cs161-proj2/src/github.com/nweaver/cs161-p2/userlib'
+let g:netrw_dirhist_2='/services/http/users/r/raymondng/eau/eauweb/static/jquery'
+let g:netrw_dirhist_3='/services/http/users/r/raymondng/portra'
+let g:netrw_dirhist_4='/services/http/users/r/raymondng/portra/venv/lib/python3.5/site-packages/libxmp'
+let g:netrw_dirhist_5='/services/http/users/r/raymondng/portra/venv/lib/python3.5/site-packages'
+let g:netrw_dirhist_6='/home/r/ra/raymondng/canvas_backup/downloads'
+let g:netrw_dirhist_7='/home/r/ra/raymondng/canvas_backup/downloads/Brain_Mind_and_Behavior_DIS_104'
+let g:netrw_dirhist_8='/home/r/ra/raymondng/tmp/test'
