@@ -1,6 +1,18 @@
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-export GIT_EDITOR=vim
-
 alias ls='ls -FGh'
+alias rm='rm -I'
+export GIT_EDITOR=vim
+export SVN_EDITOR=vim
+
+# Color terminal
+if [ "$TERM" != dumb ]; then
+  PS1='\[\e[0;31m\]\u\[\e[m\]@\[\e[m\]\[\e[0;35m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\[\e[0;31m\]\$ \[\e[m\]'
+  alias grep='grep --color=auto'
+  if [ -x /usr/bin/dircolors ]; then
+    eval "`dircolors -b`"
+    alias ls='ls -Fh --color=auto'
+  fi
+else
+  PS1='[\u@\h:\w]\$ '
+fi
+
+[ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local

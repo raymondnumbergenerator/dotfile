@@ -187,7 +187,7 @@ tmux_conf_theme_status_left_bg='#87af87,#4e4e4e,#00afff'  # light green, light g
 tmux_conf_theme_status_left_attr='none,none,none'
 
 # status right style
-tmux_conf_theme_status_right_fg='#626262,#e4e4e4,#000000' # light gray, black, white
+tmux_conf_theme_status_right_fg='#626262,#e4e4e4,#4e4e4e' # light gray, black, white
 tmux_conf_theme_status_right_bg='#262626,#4e4e4e,#87af87' # dark gray, light green, gray
 tmux_conf_theme_status_right_attr='none,none,none'
 
