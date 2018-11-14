@@ -1,5 +1,4 @@
 alias ls='ls -FGh'
-alias rm='rm -I'
 export GIT_EDITOR=vim
 export SVN_EDITOR=vim
 
