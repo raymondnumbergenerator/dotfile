@@ -19,8 +19,6 @@ function _git_count_dirty() {
     s=""
     if [[ f -gt 0 ]]; then
         s="%F{green}$c%f/%F{red}$d%f "
-    elif [[ f -eq 0 ]] ; then
-        s=""
     fi
     echo "$s"
 }
