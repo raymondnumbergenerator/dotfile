@@ -56,3 +56,6 @@ let g:lightline = {
       \ }
 set noshowmode
 
+"Copy
+vmap <C-c> :w !pbcopy<CR><CR>
+
