@@ -1,0 +1,41 @@
+export GIT_EDITOR=vim
+export SVN_EDITOR=vim
+
+function _user_host() {
+    u="%F{red}%n%f"
+    if [[ -n $SSH_CONNECTION ]]; then
+        u="$u@%F{magenta}%m%f"
+    fi
+    echo "$u"
+}
+function _git_status() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(_git_count_dirty)$(parse_git_dirty)%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+function _git_count_dirty() {
+    f=$(git status --porcelain 2>/dev/null | wc -l | xargs)
+    d=$(git status --porcelain 2>/dev/null | grep -e "^ " -e "^??" | wc -l | xargs)
+    c=$(($f-$d))
+    s=""
+    if [[ f -gt 0 ]]; then
+        s="%F{green}$c%f/%F{red}$d%f "
+    elif [[ f -eq 0 ]] ; then
+        s=""
+    fi
+    echo "$s"
+}
+local _cwd="%B%F{blue}%3~%b%f"
+local _prompt="%B%F{red}»%b%f"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%f"
+ZSH_THEME_GIT_PROMPT_CLEAN="%F{green}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}"
+
+export PROMPT='
+$(_user_host) ${_cwd} $(_git_status)
+${_prompt} '
+
+alias ls='ls -FGh'
+
+[[ -z "$TMUX" ]] && tmux new-session -A -s main
