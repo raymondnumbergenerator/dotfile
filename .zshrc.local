@@ -13,8 +13,9 @@ function _git_status() {
     echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(_git_count_dirty)$(parse_git_dirty)%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 function _git_count_dirty() {
-    f=$(git status --porcelain 2>/dev/null | wc -l | xargs)
-    d=$(git status --porcelain 2>/dev/null | grep -e "^ " -e "^??" | wc -l | xargs)
+    gs=$(git status --porcelain 2>/dev/null)
+    f=$(echo "$gs" | xargs | wc -l | xargs)
+    d=$(echo "$gs" | grep -e "^ " -e "^??" | wc -l | xargs)
     c=$(($f-$d))
     s=""
     if [[ f -gt 0 ]]; then
