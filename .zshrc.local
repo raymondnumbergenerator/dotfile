@@ -10,7 +10,12 @@ function _user_host() {
 }
 function _git_status() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(_git_count_dirty)$(parse_git_dirty)%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    d_count=$(_git_count_dirty)
+    if [[ -n "$d_count" ]]; then
+        echo "$ZSH_THEME_GIT_PROMPT_DIRTY$ZSH_THEME_GIT_PROMPT_PREFIX$d_count$ZSH_THEME_GIT_PROMPT_DIRTY%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    else
+        echo "$ZSH_THEME_GIT_PROMPT_CLEAN$ZSH_THEME_GIT_PROMPT_PREFIX%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    fi
 }
 function _git_count_dirty() {
     gs=$(git status --porcelain 2>/dev/null)
