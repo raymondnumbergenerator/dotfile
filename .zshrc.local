@@ -19,8 +19,8 @@ function _git_status() {
 }
 function _git_count_dirty() {
     gs=$(git status --porcelain 2>/dev/null)
-    f=$(echo "$gs" | xargs | wc -l | xargs)
-    d=$(echo "$gs" | grep -e "^ " -e "^??" | wc -l | xargs)
+    f=$(echo "$gs" | grep -c "^")
+    d=$(echo "$gs" | grep -e "^ " -e "^??")
     c=$(($f-$d))
     s=""
     if [[ f -gt 0 ]]; then
