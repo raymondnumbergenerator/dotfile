@@ -19,8 +19,8 @@ function _git_status() {
 }
 function _git_count_dirty() {
     gs=$(git status --porcelain 2>/dev/null)
-    f=$(echo "$gs" | grep -c "^")
-    d=$(echo "$gs" | grep -e "^ " -e "^??")
+    f=$(echo -n "$gs" | grep -c "^")
+    d=$(echo "$gs" | grep -c -e "^ " -e "^??")
     c=$(($f-$d))
     s=""
     if [[ f -gt 0 ]]; then
@@ -40,6 +40,6 @@ export PROMPT='
 $(_user_host) ${_cwd} $(_git_status)
 ${_prompt} '
 
-alias ls='ls -FGh'
+alias ls='ls -FGh --color=auto'
 
 [[ -z "$TMUX" ]] && tmux new-session -A -s main
