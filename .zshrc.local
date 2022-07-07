@@ -1,5 +1,5 @@
 export GIT_EDITOR=vim
-export SVN_EDITOR=vim
+export PATH="$HOME/.cargo/bin:$PATH"
 
 function _user_host() {
     u="%F{red}%n%f"
@@ -8,26 +8,7 @@ function _user_host() {
     fi
     echo "$u"
 }
-function _git_status() {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    d_count=$(_git_count_dirty)
-    if [[ -n "$d_count" ]]; then
-        echo "$ZSH_THEME_GIT_PROMPT_DIRTY$ZSH_THEME_GIT_PROMPT_PREFIX$d_count$ZSH_THEME_GIT_PROMPT_DIRTY%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
-    else
-        echo "$ZSH_THEME_GIT_PROMPT_CLEAN$ZSH_THEME_GIT_PROMPT_PREFIX%B$(current_branch)%b$ZSH_THEME_GIT_PROMPT_SUFFIX"
-    fi
-}
-function _git_count_dirty() {
-    gs=$(git status --porcelain 2>/dev/null)
-    f=$(echo -n "$gs" | grep -c "^")
-    d=$(echo "$gs" | grep -c -e "^ " -e "^??")
-    c=$(($f-$d))
-    s=""
-    if [[ f -gt 0 ]]; then
-        s="%F{green}$c%f/%F{red}$d%f "
-    fi
-    echo "$s"
-}
+
 local _cwd="%B%F{blue}%3~%b%f"
 local _prompt="%B%F{red}»%b%f"
 
@@ -36,10 +17,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="]%f"
 ZSH_THEME_GIT_PROMPT_CLEAN="%F{green}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}"
 
+source $ZSH/plugins/zsh-git-prompt/zshrc.sh
 export PROMPT='
-$(_user_host) ${_cwd} $(_git_status)
+$(_user_host) ${_cwd} $(git_super_status)
 ${_prompt} '
 
-alias ls='ls -FGh --color=auto'
+alias ls='ls -Fh --color=auto'
 
-[[ -z "$TMUX" ]] && tmux new-session -A -s main
+#[[ -z "$TMUX" ]] && tmux new-session -A -s main
