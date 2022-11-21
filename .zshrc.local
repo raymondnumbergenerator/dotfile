@@ -1,5 +1,7 @@
 export GIT_EDITOR=vim
-export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 function _user_host() {
     u="%F{red}%n%f"
@@ -8,7 +10,6 @@ function _user_host() {
     fi
     echo "$u"
 }
-
 local _cwd="%B%F{blue}%3~%b%f"
 local _prompt="%B%F{red}»%b%f"
 
