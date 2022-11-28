@@ -5,9 +5,11 @@ syntax enable
 set t_Co=256
 
 "Color scheme
-colorscheme seoul256
-let g:seoul256_background=234
-colo seoul256
+"colorscheme dracula
+"let g:seoul256_background=234
+"colo dracula
+packadd! dracula
+colorscheme dracula
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 

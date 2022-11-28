@@ -71,6 +71,7 @@ CASE_SENSITIVE="false"
 plugins=(
     auto-ls
     git
+    z
     zsh-autosuggestions
     zsh-syntax-highlighting
 )

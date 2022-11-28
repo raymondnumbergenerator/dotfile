@@ -25,4 +25,4 @@ ${_prompt} '
 
 alias ls='ls -Fh --color=auto'
 
-#[[ -z "$TMUX" ]] && tmux new-session -A -s main
+# [[ -z "$TMUX" ]] && tmux new-session -A -s main
