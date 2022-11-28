@@ -13,11 +13,6 @@ function _user_host() {
 local _cwd="%B%F{blue}%3~%b%f"
 local _prompt="%B%F{red}»%b%f"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]%f"
-ZSH_THEME_GIT_PROMPT_CLEAN="%F{green}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}"
-
 source $ZSH/plugins/zsh-git-prompt/zshrc.sh
 export PROMPT='
 $(_user_host) ${_cwd} $(git_super_status)
